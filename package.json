@@ -1,0 +1,50 @@
+{
+  "name": "fixed-server",
+  "description": "Server for HTTP fixtures",
+  "version": "0.1.0",
+  "homepage": "https://github.com/uber/fixed-server",
+  "author": {
+    "name": "Todd Wolfson",
+    "email": "todd@twolfson.com",
+    "url": "http://twolfson.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uber/fixed-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uber/fixed-server/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/uber/fixed-server/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/fixed-server",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt jshint && mocha"
+  },
+  "dependencies": {
+    "express": "~3.4.7"
+  },
+  "devDependencies": {
+    "mocha": "~1.11.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "request": "~2.30.0",
+    "obj-extend": "~0.1.0",
+    "chai": "~1.8.1",
+    "grunt-cli": "~0.1.11"
+  },
+  "keywords": [
+    "fixed",
+    "server",
+    "http",
+    "fixture"
+  ]
+}
