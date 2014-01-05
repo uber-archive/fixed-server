@@ -101,3 +101,13 @@ describe('A FixedServer loaded from a file', function () {
     expect(JSON.parse(this.body)).to.deep.equal([{data:true}]);
   });
 });
+
+// DEV: Regression test for https://github.com/uber/fixed-server/issues/2
+describe('Multiple FixedServers run in the same test', function () {
+  (new FixedServer(serverOptions)).run();
+  (new FixedServer(extend({}, serverOptions, {port: 1338}))).run();
+
+  it('do not conflict while shutting down', function () {
+    // DEV: This is automatic since the regression was in the mocha helpers
+  });
+});
