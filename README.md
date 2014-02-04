@@ -60,7 +60,7 @@ Helper to quickly generate a server with fixtures from a file
     - This will be loaded via `require` and passed in to `factory.addFixtures`
 - option `Object` - Options to pass to `FixedServerFactory` constructor
 
-### `factory.addFixture(name, params)`
+#### `factory.addFixture(name, params)`
 Add a new fixture to the list of potential fixture to load into child servers.
 
 - name `String` - Key to store fixture under
@@ -73,37 +73,40 @@ Add a new fixture to the list of potential fixture to load into child servers.
 
 [`express` method]: http://expressjs.com/api.html#app.VERB
 
-### `factory.addFixtures(obj)`
+#### `factory.addFixtures(obj)`
 Add multiple fixtures to our list of fixtures
 
 - obj `Object` - Container for multiple fixtures
     - Each key-value pair will be used as `name` and `params` respectively for `FixedServer.addFixtures`
 
-### `factory.createServer(fixtureNames)`
+#### `factory.createServer(fixtureNames)`
 Create a `FixedServer` with `fixtureNames` running on it
 
 - fixtureNames `String|String[]` - Single fixture name or array of fixture names to load into server
     - Each of these will be loaded via `server.installFixture`
 
-### `factory.run(fixtureNames)`
+#### `factory.run(fixtureNames)`
 Helper method for running server inside of `mocha` tests
 
 - fixtureNames `String|String[]` - Information to pass onto `factory.createServer`
 
-### `FixedServer()`
+### `FixedServer(options)`
 Create a server to host fixtures on
 
-### `server.listen(port)`
+- options `Object` - Container for options
+    - port `Number` - Port to run server from via `.listen()`
+
+#### `server.listen(port)`
 Start listening for requests
 
-- port `Number` - Port to start listening against
+- port `Number` - Port to start listening against. If not provided, it will attempt to use `options.port`.
 
-### `server.destroy(cb)`
+#### `server.destroy(cb)`
 Tear down the server
 
 - cb `Function` - Optional error-first callback to run when the server teardown is completed
 
-### `server.installFixture(fixture)`
+#### `server.installFixture(fixture)`
 Add a new route to the server
 
 - fixture `Object` - Container for route parameters
