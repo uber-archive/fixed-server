@@ -111,3 +111,26 @@ describe('Multiple FixedServers run in the same test', function () {
     // DEV: This is automatic since the regression was in the mocha helpers
   });
 });
+
+describe('A FixedServer with an initialize function', function () {
+  var fixedServer = new FixedServer(extend({}, serverOptions, {
+    initialize: function (app) {
+      app.locals.message = 'initialized';
+    }
+  }));
+  fixedServer.addFixture('GET 200 /hello', {
+    method: 'get',
+    route: '/hello',
+    response: function (req, res) {
+      res.send(req.app.locals.message);
+    }
+  });
+  fixedServer.run('GET 200 /hello');
+  saveRequest(getUrl('/hello'));
+
+  it('runs the initialize function on server create', function () {
+    expect(this.err).to.equal(null);
+    expect(this.res.statusCode).to.equal(200);
+    expect(this.body).to.equal('initialized');
+  });
+});
