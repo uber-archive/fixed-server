@@ -130,6 +130,9 @@ express().get('/hello', function (req, res) {
 });
 ```
 
+#### `server.run()`
+Helper method for running the server inside of `mocha` tests
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
 
